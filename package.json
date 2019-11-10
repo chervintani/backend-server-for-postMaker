@@ -1,12 +1,12 @@
 {
   "name": "backend-server",
   "version": "1.0.0",
-  "description": "This is the back-end server of the website eventhub",
+  "description": "Back-end server of the web EventHub",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.7.9",
-    "cors": "^2.8.5"
+    "mongoose": "^5.7.9"
   },
   "devDependencies": {},
   "scripts": {
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/chervintani/backend-server#readme",
   "engines": {
-    "node": "10.15"
+    "node": "10.x"
   }
 }

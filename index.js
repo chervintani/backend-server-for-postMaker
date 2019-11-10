@@ -27,6 +27,11 @@ app.get('/api/note/list', (req, res) => {
   });
 });
 
+app.get("/", function(req, res) {
+  //when we get an http get request to the root/homepage
+  res.send("Hello World");
+});
+
 app.post('/api/note/create', (req, res) => {
   console.log(req.body)
   const note = new schema.Post({
@@ -61,5 +66,5 @@ app.post('/api/note/delete/:id', (req, res) => {
 
 
 
-app.listen(process.env.PORT||8080);
-console.log('Server is running on port ' + 8080 + ': ');
+app.listen(process.env.PORT||3000);
+console.log('Server is running on port ' + 3000 + ': ');
