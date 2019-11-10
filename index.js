@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
+const http = require('http').Server(app);
 //models
 const schema = require('./Schema');
 
@@ -29,7 +31,7 @@ app.get('/api/note/list', (req, res) => {
 
 app.get("/", function(req, res) {
   //when we get an http get request to the root/homepage
-  res.send("Hello World");
+  res.send("Hello! This is the backend server of the website EventHub");
 });
 
 app.post('/api/note/create', (req, res) => {
@@ -66,5 +68,6 @@ app.post('/api/note/delete/:id', (req, res) => {
 
 
 
-app.listen(process.env.PORT||3000);
-console.log('Server is running on port ' + 3000 + ': ');
+http.listen(port, '0.0.0.0', function () {
+	console.log('listening on port ' + port);
+});
