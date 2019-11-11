@@ -31,7 +31,7 @@ app.get('/api/note/list', (req, res) => {
 
 app.get("/", function(req, res) {
   //when we get an http get request to the root/homepage
-  res.send("Hello! This is the backend server of the website EventHub");
+  res.send("Hello! This is the backend server of the website EventHub2");
 });
 
 app.post('/api/note/create', (req, res) => {
