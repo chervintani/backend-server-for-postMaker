@@ -31,19 +31,19 @@ app.get('/api/note/list', (req, res) => {
 
 app.get("/", function(req, res) {
   //when we get an http get request to the root/homepage
-  res.send("Hello! This is the backend server of the website EventHub2");
+  res.send("Hello! This is the backend server of the website EventHub");
 });
 
 app.post('/api/note/create', (req, res) => {
   console.log(req.body)
   const note = new schema.Post({
-    title: data.title,
-		body: data.body,
-		people: data.people,
-		location: data.location,
-		datetime: data.datetime,
-		filename: data.filename,
-		image: data.image 
+    body: req.body.body,
+    title: req.body.title,
+    people: req.body.people,
+    location: req.body.location,
+    datetime: req.body.datetime,
+    filename: req.body.filename,
+    image: req.body.image
   });
   note.save((err) => {
     if (err) return res.status(404).send({ message: err.message });
