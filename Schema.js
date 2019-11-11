@@ -5,7 +5,9 @@ const PostSchema = Schema(
     {
         title: { type: String, required: true },
         body: { type: String, required: true },
+        people: String,
         location: { type: String, required: true },
+        datetime: String,
         filename: String,
         image: String
     },

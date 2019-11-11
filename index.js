@@ -37,11 +37,13 @@ app.get("/", function(req, res) {
 app.post('/api/note/create', (req, res) => {
   console.log(req.body)
   const note = new schema.Post({
-    body: req.body.body,
-    title: req.body.title,
-    location: req.body.location,
-    filename: req.body.filename,
-    image: req.body.image
+    title: data.title,
+		body: data.body,
+		people: data.people,
+		location: data.location,
+		datetime: data.datetime,
+		filename: data.filename,
+		image: data.image 
   });
   note.save((err) => {
     if (err) return res.status(404).send({ message: err.message });
