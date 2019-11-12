@@ -40,10 +40,22 @@ app.post('/api/account/create', (req, res) => {
     username: req.body.username,
     password: req.body.password,
   });
+  
   account.save((err) => {
     if (err) return res.status(404).send({ message: err.message });
     return res.send({ account });
   });
+});
+
+app.post('/api/account/login', (req, res) => {
+  console.log(req.body)
+  schema.Account.findOne(req.body,(err,account)=>{
+    if(account!==null){
+      return res.send({login: "success"});
+    }else{
+      return res.send({login: "failed"});
+    }
+  })
 });
 
 app.post('/api/note/create', (req, res) => {
