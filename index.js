@@ -31,7 +31,19 @@ app.get('/api/note/list', (req, res) => {
 
 app.get("/", function(req, res) {
   //when we get an http get request to the root/homepage
-  res.send("Hello! This is the backend server of the website EventHub");
+  res.send("Hello! This is the backend server of the website EventHub33");
+});
+
+app.post('/api/account/create', (req, res) => {
+  console.log(req.body)
+  const account = new schema.Post({
+    username: req.body.username,
+    password: req.body.password,
+  });
+  account.save((err) => {
+    if (err) return res.status(404).send({ message: err.message });
+    return res.send({ account });
+  });
 });
 
 app.post('/api/note/create', (req, res) => {
