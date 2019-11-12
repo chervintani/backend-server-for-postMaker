@@ -36,7 +36,7 @@ app.get("/", function(req, res) {
 
 app.post('/api/account/create', (req, res) => {
   console.log(req.body)
-  const account = new schema.Post({
+  const account = new schema.Account({
     username: req.body.username,
     password: req.body.password,
   });
