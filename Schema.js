@@ -9,7 +9,8 @@ const PostSchema = Schema(
         location: { type: String, required: true },
         datetime: String,
         filename: String,
-        image: String
+        image: String,
+        date_created: String
     },
     {
         timestamps: true

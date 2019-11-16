@@ -43,7 +43,8 @@ app.post('/api/note/create', (req, res) => {
     location: req.body.location,
     datetime: req.body.datetime,
     filename: req.body.filename,
-    image: req.body.image
+    image: req.body.image,
+    date_created: req.body.date_created
   });
   note.save((err) => {
     if (err) return res.status(404).send({ message: err.message });
