@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/chervintani/backend-server#readme",
   "engines": {
-    "node": "10.x"
+    "node": "10.15"
   }
 }
