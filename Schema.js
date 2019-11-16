@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PostSchema = Schema(
+const PostSchema =new Schema(
     {
         title: { type: String, required: true },
         body: { type: String, required: true },
@@ -17,10 +17,16 @@ const PostSchema = Schema(
     }
 );
 
+const AccountSchema = new Schema({
+    username: String,
+    password: String
+})
+
 var imageSchema = new Schema({
     filename: String,
     image: String
 })
 const Image = mongoose.model('Albumn', imageSchema);
 const Post = mongoose.model("Post", PostSchema);
-module.exports = { Post, Image };
+const Account = mongoose.model("Account",AccountSchema);
+module.exports = { Post, Image, Account };
