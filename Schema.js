@@ -17,11 +17,12 @@ const PostSchema = Schema(
         timestamps: true
     }
 );
-
-var imageSchema = new Schema({
-    filename: String,
-    image: String
+const AccountSchema = new Schema({
+    username: String,
+    password: String
 })
-const Image = mongoose.model('Albumn', imageSchema);
+
+
 const Post = mongoose.model("Post", PostSchema);
-module.exports = { Post, Image };
+const Account = mongoose.model("Post", AccountSchema);
+module.exports = { Post, Account };

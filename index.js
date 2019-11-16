@@ -34,6 +34,18 @@ app.get("/", function(req, res) {
   res.send("Hello! This is the backend server of the website EventHub");
 });
 
+app.post('/api/account/login', (req, res) => {
+  console.log(req.body)
+  schema.Account.findOne(req.body,(err,account)=>{
+    if(account!==null){
+      return res.send({login: "success"});
+    }else{
+      return res.send({login: "failed"});
+    }
+  })
+});
+
+
 app.post('/api/note/create', (req, res) => {
   console.log(req.body)
   const note = new schema.Post({
