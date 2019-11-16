@@ -10,7 +10,8 @@ const PostSchema = Schema(
         datetime: String,
         filename: String,
         image: String,
-        date_created: String
+        date_created: String,
+        date_updated: String
     },
     {
         timestamps: true
