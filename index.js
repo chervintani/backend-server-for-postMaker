@@ -65,6 +65,7 @@ app.post('/api/note/create', (req, res) => {
     title: req.body.title,
     people: req.body.people,
     location: req.body.location,
+    creator: req.body.creator,
     datetime: req.body.datetime,
     filename: req.body.filename,
     image: req.body.image,
