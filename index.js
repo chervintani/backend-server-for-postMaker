@@ -89,7 +89,7 @@ app.get('api/note/searching',(req,res)=>{
   //   if(err) return res.send(err)
   //   res.send(docs)
   // })
-  res.send("I read it")
+  return res.send("I read it")
 });
 
 app.post('/api/note/delete/:id', (req, res) => {
