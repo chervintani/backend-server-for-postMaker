@@ -3,8 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = 3000;
-// const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const http = require('http').Server(app);
 //models
 const schema = require('./Schema');
@@ -108,10 +107,6 @@ app.post('/api/note/delete/:id', (req, res) => {
   });
 });
 
-
-http.listen(port, function () {
+http.listen(port, '0.0.0.0', function () {
   console.log('listening on port ' + port);
 });
-// http.listen(port, '0.0.0.0', function () {
-//   console.log('listening on port ' + port);
-// });
