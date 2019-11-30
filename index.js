@@ -29,9 +29,9 @@ app.get('/api/note/list', (req, res) => {
   });
 });
 
-app.get("/", function(req, res) {
+app.get("/", (req, res)=> {
   //when we get an http get request to the root/homepage
-  res.send("Hello! This is the backend server of the website EventHub(added search)");
+  res.send("Hello! This is the backend server of the website EventHub(added search2)");
 });
 
 app.post('/api/account/create', (req, res) => {
@@ -83,17 +83,22 @@ app.post('/api/note/update/:id', (req, res) => {
   });
 });
 
-app.get('api/note/searching',(req,res)=>{
-  console.log(req)
-  // schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
-  //   if(err) return res.send(err)
-  //   res.send(docs)
-  // })
-  schema.Post.find({}).sort({ updatedAt: 'descending' }).exec((err, notes) => {
-    if (err)
-      return res.status(404).send('Error while getting notes!');
-    return res.send({ notes });
-  });
+// app.get('api/note/searching',(req,res)=>{
+//   console.log(req)
+//   // schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
+//   //   if(err) return res.send(err)
+//   //   res.send(docs)
+//   // })
+
+// });
+
+app.get('/api/note/search', (req, res) => {
+  // schema.Post.find({}).sort({ updatedAt: 'descending' }).exec((err, notes) => {
+  //   if (err)
+  //     return res.status(404).send('Error while getting notes!');
+  //   return res.send({ notes });
+  // });
+  return res.send("I read it")
 });
 
 app.post('/api/note/delete/:id', (req, res) => {
