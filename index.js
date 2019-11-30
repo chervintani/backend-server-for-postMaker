@@ -35,7 +35,6 @@ app.get("/", function(req, res) {
 });
 
 app.post('/api/account/create', (req, res) => {
-  console.log(req.body)
   const account = new schema.Account({
     username: req.body.username,
     password: req.body.password,
@@ -48,7 +47,6 @@ app.post('/api/account/create', (req, res) => {
 });
 
 app.post('/api/account/login', (req, res) => {
-  console.log(req.body)
   schema.Account.findOne(req.body,(err,account)=>{
     if(account!==null){
       return res.send({login: "success"});
@@ -59,7 +57,6 @@ app.post('/api/account/login', (req, res) => {
 });
 
 app.post('/api/note/create', (req, res) => {
-  console.log(req.body)
   const note = new schema.Post({
     body: req.body.body,
     title: req.body.title,
@@ -80,7 +77,6 @@ app.post('/api/note/create', (req, res) => {
 
 
 app.post('/api/note/update/:id', (req, res) => {
-  console.log(req.body.data)
   schema.Post.findByIdAndUpdate(req.params.id, req.body.data, { new: true }, (err, note) => {
     if (err) return res.status(404).send({ message: err.message });
     return res.send({ message: 'note updated!', note });
@@ -88,7 +84,6 @@ app.post('/api/note/update/:id', (req, res) => {
 });
 
 app.post('/api/note/delete/:id', (req, res) => {
-  console.log(req.params.id)
   schema.Post.findByIdAndRemove(req.params.id, (err) => {
     if (err) return res.status(404).send({ message: err.message });
     return res.send({ message: 'note deleted!' });
@@ -96,8 +91,9 @@ app.post('/api/note/delete/:id', (req, res) => {
 });
 
 app.post('api/note/search',(req,res)=>{
+  console.log(req)
   schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
-    console.log(docs);
+    if(err) return res.send(err)
     res.send(docs)
   })
 })
