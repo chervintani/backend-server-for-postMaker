@@ -3,7 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
+const port = 3000;
+// const port = process.env.PORT || 3000;
 const http = require('http').Server(app);
 //models
 const schema = require('./Schema');
@@ -94,11 +95,10 @@ app.post('/api/note/update/:id', (req, res) => {
 
 app.get('/api/note/search', (req, res) => {
   let search = req.body.search
-  schema.Post.find({ title: { $regex: "asd", $options: "i" } }, (err, docs) => {
+  schema.Post.find({ title: { $regex: search, $options: "i" } }, (err, docs) => {
     if (err) return res.send(search)
     res.send(docs)
   })
-  
 });
 
 app.post('/api/note/delete/:id', (req, res) => {
@@ -109,6 +109,9 @@ app.post('/api/note/delete/:id', (req, res) => {
 });
 
 
-http.listen(port, '0.0.0.0', function () {
+http.listen(port, function () {
   console.log('listening on port ' + port);
 });
+// http.listen(port, '0.0.0.0', function () {
+//   console.log('listening on port ' + port);
+// });
