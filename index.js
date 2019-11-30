@@ -95,6 +95,12 @@ app.post('/api/note/delete/:id', (req, res) => {
   });
 });
 
+app.post('api/note/search',(req,res)=>{
+  schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
+    console.log(docs);
+    res.send(docs)
+  })
+})
 
 
 http.listen(port, '0.0.0.0', function () {
