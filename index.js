@@ -94,8 +94,8 @@ app.post('/api/note/update/:id', (req, res) => {
 
 app.get('/api/note/search', (req, res) => {
   let search = req.body.search
-  schema.Post.find({ title: { $regex: search, $options: "i" } }, (err, docs) => {
-    if (err) return res.send(err)
+  schema.Post.find({ title: { $regex: search.toString(), $options: "i" } }, (err, docs) => {
+    if (err) return res.send(search)
     res.send(docs)
   })
   
