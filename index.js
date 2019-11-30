@@ -92,10 +92,11 @@ app.post('/api/note/delete/:id', (req, res) => {
 
 app.post('api/note/search',(req,res)=>{
   console.log(req)
-  schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
-    if(err) return res.send(err)
-    res.send(docs)
-  })
+  // schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
+  //   if(err) return res.send(err)
+  //   res.send(docs)
+  // })
+  res.send("I read it")
 })
 
 
