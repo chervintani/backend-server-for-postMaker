@@ -29,7 +29,7 @@ app.get('/api/note/list', (req, res) => {
   });
 });
 
-app.get("/", (req, res)=> {
+app.get("/", (req, res) => {
   //when we get an http get request to the root/homepage
   res.send("Hello! This is the backend server of the website EventHub(added search2)");
 });
@@ -39,7 +39,7 @@ app.post('/api/account/create', (req, res) => {
     username: req.body.username,
     password: req.body.password,
   });
-  
+
   account.save((err) => {
     if (err) return res.status(404).send({ message: err.message });
     return res.send({ account });
@@ -47,11 +47,11 @@ app.post('/api/account/create', (req, res) => {
 });
 
 app.post('/api/account/login', (req, res) => {
-  schema.Account.findOne(req.body,(err,account)=>{
-    if(account!==null){
-      return res.send({login: "success"});
-    }else{
-      return res.send({login: "failed"});
+  schema.Account.findOne(req.body, (err, account) => {
+    if (account !== null) {
+      return res.send({ login: "success" });
+    } else {
+      return res.send({ login: "failed" });
     }
   })
 });
@@ -93,12 +93,10 @@ app.post('/api/note/update/:id', (req, res) => {
 // });
 
 app.get('/api/note/search', (req, res) => {
-  // schema.Post.find({}).sort({ updatedAt: 'descending' }).exec((err, notes) => {
-  //   if (err)
-  //     return res.status(404).send('Error while getting notes!');
-  //   return res.send({ notes });
-  // });
-  return res.send("I read it")
+  schema.Post.find({ title: { $regex: req.body.search, $options: "i" } }, (err, docs) => {
+    if (err) return res.send(err)
+    res.send(docs)
+  })
 });
 
 app.post('/api/note/delete/:id', (req, res) => {
@@ -110,5 +108,5 @@ app.post('/api/note/delete/:id', (req, res) => {
 
 
 http.listen(port, '0.0.0.0', function () {
-	console.log('listening on port ' + port);
+  console.log('listening on port ' + port);
 });
