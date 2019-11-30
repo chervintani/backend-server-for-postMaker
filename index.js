@@ -93,10 +93,12 @@ app.post('/api/note/update/:id', (req, res) => {
 // });
 
 app.get('/api/note/search', (req, res) => {
-  schema.Post.find({ title: { $regex: req.body.search, $options: "i" } }, (err, docs) => {
+  let search = req.body.search
+  schema.Post.find({ title: { $regex: search, $options: "i" } }, (err, docs) => {
     if (err) return res.send(err)
     res.send(docs)
   })
+  
 });
 
 app.post('/api/note/delete/:id', (req, res) => {
