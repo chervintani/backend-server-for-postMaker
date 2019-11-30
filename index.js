@@ -83,7 +83,7 @@ app.post('/api/note/update/:id', (req, res) => {
   });
 });
 
-app.post('api/note/searching',(req,res)=>{
+app.get('api/note/searching/:data',(req,res)=>{
   console.log(req)
   // schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
   //   if(err) return res.send(err)
