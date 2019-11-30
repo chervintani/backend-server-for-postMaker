@@ -88,7 +88,7 @@ app.get('/api/note/search/:data', (req, res) => {
   let search = req.params.data
   schema.Post.find({ title: { $regex: search, $options: "i" } }, (err, docs) => {
     if (err) return res.send(search)
-    res.send(docs)
+    res.send({data: docs, search: search})
   })
 });
 
