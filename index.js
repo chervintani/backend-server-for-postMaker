@@ -83,13 +83,6 @@ app.post('/api/note/update/:id', (req, res) => {
   });
 });
 
-app.post('/api/note/delete/:id', (req, res) => {
-  schema.Post.findByIdAndRemove(req.params.id, (err) => {
-    if (err) return res.status(404).send({ message: err.message });
-    return res.send({ message: 'note deleted!' });
-  });
-});
-
 app.post('api/note/search',(req,res)=>{
   console.log(req)
   // schema.Post.find({title: {$regex: req.body.search, $options: "i"}},(err,docs)=>{
@@ -97,7 +90,14 @@ app.post('api/note/search',(req,res)=>{
   //   res.send(docs)
   // })
   res.send("I read it")
-})
+});
+
+app.post('/api/note/delete/:id', (req, res) => {
+  schema.Post.findByIdAndRemove(req.params.id, (err) => {
+    if (err) return res.status(404).send({ message: err.message });
+    return res.send({ message: 'note deleted!' });
+  });
+});
 
 
 http.listen(port, '0.0.0.0', function () {
