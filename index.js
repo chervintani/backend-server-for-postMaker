@@ -89,7 +89,11 @@ app.get('api/note/searching',(req,res)=>{
   //   if(err) return res.send(err)
   //   res.send(docs)
   // })
-  return res.send("I read it")
+  schema.Post.find({}).sort({ updatedAt: 'descending' }).exec((err, notes) => {
+    if (err)
+      return res.status(404).send('Error while getting notes!');
+    return res.send({ notes });
+  });
 });
 
 app.post('/api/note/delete/:id', (req, res) => {
